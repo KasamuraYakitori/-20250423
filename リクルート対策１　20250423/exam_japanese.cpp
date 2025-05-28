@@ -1,5 +1,6 @@
 #include "exam_japanese.h"
 #include"utility.h"
+#include<random>
 using namespace std;
 
 //漢字の読み取り問題を作成する
@@ -21,12 +22,18 @@ QuestionList CreteKanjiExam()
 	QuestionList questions;
 	questions.reserve(quizCount);
 	const vector<int> indices = CreateRandomIndices(size(data));
+	random_device rd;
 
-	for (int i = 0; i < quizCount; i++) {
-		const auto& e = data[indices[i]];
-		questions.push_back({
-			"「" + string(e.kanji) + "」の読みをひらがなで答えよ",
-			e.reading });
+	//問題の種類を選ぶ
+	int type = uniform_int_distribution<>(0, 1)(rd);
+	if (type == 0) {
+		//漢字の読みを答える問題
+		for (int i = 0; i < quizCount; i++) {
+			const auto& e = data[indices[i]];
+			questions.push_back({
+				"「" + string(e.kanji) + "」の読みをひらがなで答えよ",
+				e.reading });
+		}
 	}
 	return questions;
 }
