@@ -1,15 +1,10 @@
+#include"question.h"
+#include"exam_japanese.h"
 #include<iostream>
 #include<string>
 #include<vector>
 #include<random>
 using namespace std;
-
-//問題文と答えをまとめる構造体
-struct Question
-{
-	string q; //問題文
-	string a; //答え
-};
 
 //最大公約数を求める
 int gcd(int a, int b)
@@ -114,6 +109,13 @@ int main()
 		to_string(z) });
 
 	cout << "[リクルート対策クイズ]\n";
+
+	cout << "教科を選んでください\n1=数学\n2=国語\n";
+	int subject;
+	cin >> subject;
+	if (subject == 2) {
+		questions = CreateKanjiExam();
+	}
 
 	for (const auto& e : questions) {
 		cout << e.q << "\n";
