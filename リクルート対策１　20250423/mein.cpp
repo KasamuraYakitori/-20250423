@@ -114,7 +114,7 @@ int main()
 	int subject;
 	cin >> subject;
 	if (subject == 2) {
-		questions = CreateKanjiExam();
+		questions = CreteKanjiExam();
 	}
 
 	for (const auto& e : questions) {

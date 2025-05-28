@@ -1,8 +1,9 @@
 #include "exam_japanese.h"
+#include"utility.h"
 using namespace std;
 
 //Š¿š‚Ì“Ç‚İæ‚è–â‘è‚ğì¬‚·‚é
-QuestionList CretekanjiExam()
+QuestionList CreteKanjiExam()
 {
 	static const struct {
 		const char* kanji; //Š¿š
@@ -19,8 +20,10 @@ QuestionList CretekanjiExam()
 	constexpr int quizCount = 5;
 	QuestionList questions;
 	questions.reserve(quizCount);
+	const vector<int> indices = CreateRandomIndices(size(data));
+
 	for (int i = 0; i < quizCount; i++) {
-		const auto& e = data[i];
+		const auto& e = data[indices[i]];
 		questions.push_back({
 			"u" + string(e.kanji) + "v‚Ì“Ç‚İ‚ğ‚Ğ‚ç‚ª‚È‚Å“š‚¦‚æ",
 			e.reading });
