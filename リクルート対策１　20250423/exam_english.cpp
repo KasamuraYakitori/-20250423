@@ -14,16 +14,33 @@ QuestionList CreateEnglishWordExam()
 		 {"state", "ステート", "状態"},
 		 {"business", "ビジネス", "仕事"},
 		 {"abstract", "アブストラクト", "抽象的な"},
-		 {"concract", "コンクリート", "具体的な"},
+		 {"concrete", "コンクリート", "具体的な"},
 		 {"digital", "デジタル", "数字で情報を伝える"},
 		 {"analogue", "アナログ", "類似しているもの、類似物"},
 		 {"exchange", "エクスチェンジ", "交換、両替、為替"},
 		 {"infrastructure", "インフラストラクチャ", "下部構造、基礎となる施設や設備"},
 		 {"knowledge", "ナレッジ", "知識"},
 		 {"credit", "クレジット", "信用"},
+		 {"routine", "ルーティン", "決まった手順"},
+		 {"management", "マネジメント", "管理経営"},
+		 {"account", "アカウント", "会計、口座"},
+		 {"unique", "ユニーク", "他に類を見ない、個性的な"},
+		 {"variety", "バラエティ", "変化に富む、多彩な"},
+		 {"schedule", "スケジュール", "予定、計画"},
+		 {"agenda", "アジェンダ", "課題、議題"},
+		 {"technology", "テクノロジー", "科学技術"},
+		 {"collaboration", "コラボレーション", "協力、共同事業、共同作業"},
+		 {"tax", "タックス", "税金"},
+		 {"stock", "ストック", "在庫、株券"},
+		 {"product", "プロダクト", "製品"},
+		 {"booking", "ブッキング", "予約、帳簿への記入"},
+		 {"weight", "ウェイト", "重さ"},
+		 {"compliance", "コンプライアンス", "法令社会的規範を守る"},
+		 {"receipt", "レシート", "領収書"},
+		 
 	 };
 
-	 constexpr int quizCount = 5;
+	 constexpr int quizCount = 26;
 	 QuestionList questions;
 	 questions.reserve(quizCount);
 	 const vector<int> indices = CreateRandomIndices(size(data));
