@@ -135,8 +135,12 @@
   <ItemGroup>
     <ClInclude Include="exam_English.h" />
     <ClInclude Include="exam_japanese.h" />
+    <ClInclude Include="exam_science.h" />
     <ClInclude Include="question.h" />
     <ClInclude Include="utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="exam_science.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

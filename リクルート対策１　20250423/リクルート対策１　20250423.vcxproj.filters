@@ -41,5 +41,13 @@
     <ClInclude Include="exam_English.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="exam_science.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="exam_science.cpp">
+      <Filter>ソース ファイル</Filter>
+    </None>
   </ItemGroup>
 </Project>
