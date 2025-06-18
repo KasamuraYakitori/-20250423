@@ -40,9 +40,67 @@ QuestionList CreatePhysicsExam()
 		int t = uniform_int_distribution<>(1, 20)(rd);
 		questions.push_back({
 			"秒速" + to_string(v0) + "mで移動していた車が進行方向に大きさ" + to_string(a) +
-			"m/sで等速加速度直線運動を始めた\n" + to_string(t) + "病後の速度をm/s単位で求めよ",
+			"m/sで等速加速度直線運動を始めた\n" + to_string(t) + "秒後の速度をm/s単位で求めよ",
 			to_string(v0 + a + t) });
-		//等速加速度直線運動
-	}
+		
+	
+
+	//公式:x = v0t+1/2*at^2を使って解く問題
+		v0 = uniform_int_distribution<>(5, 20)(rd);//初速
+		a = uniform_int_distribution<>(1, 5)(rd)*2;//加速度
+		t = uniform_int_distribution<>(1, 10)(rd);//移動時間
+		questions.push_back({
+			"秒速" + to_string(v0) + "mで移動してた車が進行方向に大きさ" + to_string(a) +
+			"m/sで等加速度直線運動を始めた、\n加速を始めてから" + to_string(t) +
+			"秒後までに移動した距離をm単位で求めよ",
+			to_string(v0 * t + a * t * t / 2) });
+
+		//公式：v^2-v0^2 = 2axを使って解く問題
+		a = uniform_int_distribution<>(1,5)(rd)*2;//加速度
+		t = uniform_int_distribution<>(1, 10)(rd);//移動時間
+		v0 = -a * t;//初速
+		questions.push_back({
+			"秒速" + to_string(v0) + "mで移動してた車がブレーキをかけたところ" + 
+			to_string(v0*t+a*t*t/2) +"m進んで停止した\n"+
+			"ブレーキの加速度をm/s^2単位で求めよ",
+			to_string(a)});
+	}//等速加速度直線運動
+
+	{//重力加速度
+		int t = uniform_int_distribution<>(1, 10)(rd);//移動速度
+		int x = 98 * t * t / 2;//10倍することで小数点以下第一位までを整数としてあらわす
+		string answer = to_string(x / 10);//整数部を文字列化
+		if (x % 10) {
+			//少数部がある場合は少数部を文字列化
+			answer += '.';
+			answer += '0' + x % 10;
+		}
+		questions.push_back({
+			"重力加速度を9.8m/s^2とする\n十分に高い位置から物体を静かに落とすと物体は" +
+			to_string(t) + "秒間でＸｍ落下する\n" +
+			"Ｘの値を少数点以下第一位まで求めよ(空気抵抗はないものとする)",
+			answer });
+
+		int v0 = uniform_int_distribution<>(1, 10)(rd);
+		t = uniform_int_distribution<>(1, 10)(rd);
+		int v = v0 * 10 - 98 * t;
+		answer.clear();
+		if (v < 0) {
+			v = -v;
+			answer = '-';
+		}
+		answer += to_string(v / 10);
+		if (v % 10) {
+			answer += '.';
+			answer += '0' + v % 10;
+		}
+		questions.push_back({
+			"重力加速度を9.8m/s^2とする\n初速" +
+			to_string(v0) + "m/sで物体を鉛直に投げ上げた時、" +to_string(t)+
+			"秒後の物体の速度はXm/sである\n"+
+			"Xの値を小数点以下第一位まで求めよ(空気抵抗はないものとする)",
+			answer });
+
+	}//重力加速度
 	return questions;
 };
