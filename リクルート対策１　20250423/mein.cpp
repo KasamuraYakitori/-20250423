@@ -23,7 +23,7 @@ int gcd(int a, int b)
 
 int main()
 {
-	vector<Question> questions(3);
+	vector<Question> questions(4);
 
 	random_device rd;
 	mt19937 rand(rd());

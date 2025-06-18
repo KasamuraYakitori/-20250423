@@ -1,4 +1,4 @@
-#include"exam_English.h"
+#include"exam_science.h"
 #include"utility.h"
 #include<random>
 using namespace std;
@@ -32,6 +32,17 @@ QuestionList CreatePhysicsExam()
 			to_string(t) });
 
 	}//等速直線移動
-
+	{
+		//等速速度直線運動
+		//公式:v = v0 +atを使って解く問題
+		int v0 = uniform_int_distribution<>(	1,10)(rd);
+		int a = uniform_int_distribution<>(1, 5)(rd);
+		int t = uniform_int_distribution<>(1, 20)(rd);
+		questions.push_back({
+			"秒速" + to_string(v0) + "mで移動していた車が進行方向に大きさ" + to_string(a) +
+			"m/sで等速加速度直線運動を始めた\n" + to_string(t) + "病後の速度をm/s単位で求めよ",
+			to_string(v0 + a + t) });
+		//等速加速度直線運動
+	}
 	return questions;
 };
