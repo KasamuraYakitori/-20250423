@@ -219,5 +219,17 @@ QuestionList CreatePhysicsExam()
 			 "Xの値を小数点以下第二位を四捨五入して求めよ",
 			 answer });
 	}//ばね
+
+	{//振り子
+		int l = uniform_int_distribution<>(1, 10)(rd);//長さの平方根
+		int m = uniform_int_distribution<>(1, 10)(rd);//質量
+
+		questions.push_back({
+			 "長さ" + to_string(l*l) + "mの糸に質量" + to_string(m) +
+			 "kgのおもりを付け、わずかに揺らしたところ、周期はX秒だった。Xの値を求めよ" +
+			 "なお重力加速度gと円周率πについて、π＝√gが成り立つものとする" ,
+			
+			 to_string(2*1)});
+	}//振り子
 	return questions;
 };
