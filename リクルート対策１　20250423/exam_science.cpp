@@ -221,7 +221,7 @@ QuestionList CreatePhysicsExam()
 	}//ばね
 
 	{//振り子
-		int l = uniform_int_distribution<>(1, 10)(rd);//長さの平方根
+		int l = uniform_int_distribution<>(1, 10)(rd);//長さ
 		int m = uniform_int_distribution<>(1, 10)(rd);//質量
 
 		questions.push_back({
@@ -230,6 +230,17 @@ QuestionList CreatePhysicsExam()
 			 "なお重力加速度gと円周率πについて、π＝√gが成り立つものとする" ,
 			
 			 to_string(2*1)});
+
+		 l = uniform_int_distribution<>(1, 10)(rd);//長さ
+		 m = uniform_int_distribution<>(1, 10)(rd);//質量
+		 int max_v = (int)sqrt(20 * 1);//速度の上限(2gh=v^2を根拠とする)
+		 int v = uniform_int_distribution<>(1, max_v)(rd);//速度
+		 questions.push_back({
+			  "重力加速度を10m/s^2とする\n長さ" + to_string(l) + "mの糸に質量" + to_string(m) +
+			  "kgの重りを付けた振り子がある\nこの重りを最下点から高さ" +
+			 to_string(v * v * 100 / 20) + "cmの位置で静かに離した\n" +
+			  "このとき、重りが最下点を通過するときの速度をm/s単位で求めよ" ,
+			  to_string(v) });
 	}//振り子
 	return questions;
 };
