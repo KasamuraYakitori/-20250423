@@ -198,6 +198,26 @@ QuestionList CreatePhysicsExam()
 			"するとばねの長さが合わせてXcm伸びて静止した^n"+
 			"Xの値を小数点以下第二位を四捨五入して求めよ",
 			answer });
+
+		 k1 = uniform_int_distribution<>(1, 10)(rd);//自然長
+		 k2 = uniform_int_distribution<>(1, 10)(rd);//自然長からの変化量
+		 m = uniform_int_distribution<>(1, 10)(rd) * 10;//質量
+		 x = 100 * m / (k1 + k2) + 5;
+		 answer = to_string(x / 100);
+		 x /= 10;
+		 if (x % 10)
+		 {
+			 answer += '.';
+			 answer += '0' + k % 10;
+		 }
+
+		 questions.push_back({
+			 "重力加速度を10m/s^2とする\nばね定数が" + to_string(k1) + "と" + to_string(k2) +
+			 "の二本のばねを水平な天井に固定し、ばねの下端に木の棒に水平に取り付けた\n" +
+			 "この棒の中央に質量" +to_string(m)+"gのおもりを吊り下げた\n"+
+			 "するとばねの長さがそれぞれXmだけ伸びて静止した\n"
+			 "Xの値を小数点以下第二位を四捨五入して求めよ",
+			 answer });
 	}//ばね
 	return questions;
 };
