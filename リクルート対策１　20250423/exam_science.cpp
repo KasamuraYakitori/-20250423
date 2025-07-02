@@ -172,7 +172,7 @@ QuestionList CreatePhysicsExam()
 		}
 
 		questions.push_back({
-			"重力加速度を10m/s^2とする\n長さ" + to_string(x) + "cmのばねの先端に"+
+			"重力加速度を10m/s^2とする\n長さ" + to_string(a) + "cmのばねの先端に"+
 			to_string(a+ x) + "cmになった" +
 			"このばねの「ばね定数」を小数点第２位以下を四捨五入して求めよ",
 			answer });
