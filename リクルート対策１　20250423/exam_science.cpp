@@ -23,9 +23,9 @@ QuestionList CreatePhysicsExam()
 			"km移動するのにかかる時間を分単位で求めよ",
 			to_string(t) });
 
-		int i = uniform_int_distribution<>(0, size(divisors) - 1)(rd);
-		int v = uniform_int_distribution<>(0, 10)(rd) * 60 / divisors[i];
-		int t = uniform_int_distribution<>(0, 10)(rd) * divisors[i];
+		 i = uniform_int_distribution<>(0, size(divisors) - 1)(rd);
+		 v = uniform_int_distribution<>(0, 10)(rd) * 60 / divisors[i];
+		 t = uniform_int_distribution<>(0, 10)(rd) * divisors[i];
 		questions.push_back({
 			"ある車" + to_string(v) + "kmまで離れた地点まで移動するのに" + to_string(t) +
 			"分かかった\nこの車の平均時速を求めよ",
@@ -158,5 +158,46 @@ QuestionList CreatePhysicsExam()
 			answer });
 	}//浮力
 
+	{//ばね
+		int a = uniform_int_distribution<>(10, 30)(rd) * 100;//自然長
+		int x = uniform_int_distribution<>(1, a / 2)(rd);//自然長からの変化量
+		int m = uniform_int_distribution<>(1, 20)(rd) * 10;//質量
+		int k = 100 * m / x + 5;//ｋの100倍を求め、四捨五入のため5を足す
+		string answer = to_string(k / 100);//整数部を文字列に加える
+		k /= 10;
+		if (k % 10)
+		{
+			answer += '.';
+			answer += '0' + k % 10;
+		}
+
+		questions.push_back({
+			"重力加速度を10m/s^2とする\n長さ" + to_string(x) + "cmのばねの先端に"+
+			to_string(a+ x) + "cmになった" +
+			"このばねの「ばね定数」を小数点第２位以下を四捨五入して求めよ",
+			answer });
+
+		int k1 = uniform_int_distribution<>(1, 3)(rd);//ばね定数１(N/m)
+		int k2 = uniform_int_distribution<>(1, 9)(rd);//ばね定数２(N/m)
+		if (k2 >= k1) {
+			k2++;
+		}
+		m = uniform_int_distribution<>(1, 10)(rd) * 10;//質量
+		x = 100 * m * (k1 + k2) / (k1 * k2) + 5;
+		answer = to_string(x / 100);
+		x /= 10;
+		if (x % 10)
+		{
+			answer += '.';
+			answer += '0' + k % 10;
+		}
+
+		questions.push_back({
+			"重力加速度を10m/s^2とする\nばね定数が" + to_string(k1) + "と" +to_string(k2)+
+			"の二つのばねを直列につなぎ、" + to_string(m)+"gのおもりを付けて天井から吊り下げた\n" +
+			"するとばねの長さが合わせてXcm伸びて静止した^n"+
+			"Xの値を小数点以下第二位を四捨五入して求めよ",
+			answer });
+	}//ばね
 	return questions;
 };

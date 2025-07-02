@@ -140,7 +140,7 @@
     <ClInclude Include="utility.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="exam_science.cpp" />
+    <ClCompile Include="exam_science.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
